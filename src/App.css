@@ -1,42 +1,246 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.workspace {
+  min-height: 100vh;
+  background: #0a0f1d;
+  color: #e5e7eb;
+  padding: 1.2rem;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.workspace-header h1 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.chip {
+  background: #111a31;
+  border: 1px solid #2a3b6d;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-areas:
+    'chat plan'
+    'dev dev';
+  gap: 1rem;
+}
+
+.panel {
+  background: #0f172a;
+  border: 1px solid #1f2a44;
+  border-radius: 14px;
+  padding: 0.9rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.chat-panel {
+  grid-area: chat;
+}
+
+.plan-panel {
+  grid-area: plan;
+}
+
+.dev-panel {
+  grid-area: dev;
+}
+
+.messages {
+  max-height: 280px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.message {
+  border-radius: 12px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #243255;
+}
+
+.message.user {
+  background: #14203b;
+}
+
+.message.assistant {
+  background: #0f2430;
+}
+
+.message p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.message small {
+  display: block;
+  margin-top: 0.35rem;
+  color: #93c5fd;
+}
+
+.command-box {
+  display: flex;
+  gap: 0.6rem;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  background: #0b1325;
+  color: #e5e7eb;
+  border: 1px solid #28375f;
+  border-radius: 10px;
+  padding: 0.65rem;
+}
+
+button {
+  background: #6366f1;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+}
+
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  margin-top: 0.5rem;
+  height: 10px;
+  border-radius: 999px;
+  background: #1b2946;
+  overflow: hidden;
+}
+
+.progress-bar > div {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #06b6d4);
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.todo-list li {
+  background: #101a30;
+  border: 1px solid #223050;
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.todo-list li.done {
+  color: #d1fae5;
+}
+
+.split-header,
+.split-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+pre {
+  margin: 0;
+  background: #090f1e;
+  border: 1px solid #243355;
+  border-radius: 12px;
+  padding: 0.8rem;
+  min-height: 270px;
+  overflow: auto;
+}
+
+code {
+  color: #dbeafe;
+  font-size: 0.82rem;
+}
+
+.phone-shell {
+  border: 8px solid #1f2937;
+  border-radius: 28px;
+  background: #030712;
+  padding: 1.2rem 0.8rem 0.8rem;
+  min-height: 290px;
+  position: relative;
+}
+
+.phone-notch {
+  width: 90px;
+  height: 16px;
+  border-radius: 999px;
+  background: #111827;
+  margin: 0 auto 1rem;
+}
+
+.preview-card {
+  background: #111827;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.preview-card h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.preview-card p {
+  color: #9ca3af;
+}
+
+@media (max-width: 980px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'chat'
+      'plan'
+      'dev';
   }
-  to {
-    transform: rotate(360deg);
+
+  .split-header,
+  .split-content {
+    grid-template-columns: 1fr;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
